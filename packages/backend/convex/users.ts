@@ -1,4 +1,4 @@
-import { query } from "./_generated/server.js";
+import { query, mutation } from "./_generated/server.js";
 
 export const getMany = query({
     args: {},
@@ -9,3 +9,13 @@ export const getMany = query({
     }
 })
 
+export const add = mutation({
+    args: {},
+    handler: async (ctx) => {
+        const userId = await ctx.db.insert("users", {
+            name: "Anton"
+        });
+
+        return userId;
+    }
+});
