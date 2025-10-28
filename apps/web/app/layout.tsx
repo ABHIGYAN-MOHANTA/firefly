@@ -4,7 +4,6 @@ import "@workspace/ui/globals.css"
 import { Providers } from "@/components/providers"
 import { ClerkProvider } from '@clerk/nextjs'
 
-
 const fontSans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -26,7 +25,9 @@ export default function RootLayout({
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
       >
         <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}>
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+          </Providers>
         </ClerkProvider>
       </body>
     </html>
